@@ -1,32 +1,32 @@
-/* Simple helper listener to determine if the user is scrolling up or down, you can check this at any point in your code.
- * Examples:
- * window.jp_scrollDirection === 'up'
- * or
- * window.jp_scrollDirection === 'down'
+let jp_lastScrollTop = 0;
+export let jp_scrollDirection;
+
+/**
+ * Compares the distance scrolled on the page to determine when the user is scrolling down or up.
+ * 
+ * @return string|null Either 'down' or 'up', however the value is null before any scrolling has occurred .
  */
-
-window.jp_lastScrollTop = 0;
-window.jp_scrollDirection = 'down';
-window.addEventListener('scroll', function(){
-
+function jp_updateScrollDirection() {
 	try {
 
-		let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+		// Try a couple older sources of the "distance scrolled from top" value, this adds some older browsers for compatibility.
+		let scrollTop = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
 
-		if (scrollTop > window.jp_lastScrollTop){
-			window.jp_scrollDirection = 'down';
+		if (scrollTop > jp_lastScrollTop){
+			jp_scrollDirection = 'down';
 		} else {
-			window.jp_scrollDirection = 'up';
+			jp_scrollDirection = 'up';
 		}
 
-		window.jp_lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Set the last scrollTop value, and make sure the scrolling doesn't go negative.
-
-		//  console.log(window.jp_scrollDirection);
+		jp_lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Set the last scrollTop value, and make sure the scrolling doesn't go negative.
 
 	}
 	catch(error){
-		console.log('Error with scroll direction detection.');
-		console.log(error);
+		console.log('Error with scroll direction detection:', error);
 	}
 
-}, { passive: true });
+	return jp_scrollDirection;
+};
+
+// Update the scroll direction on the `scroll` event.
+window.addEventListener('scroll', jp_updateScrollDirection, { passive: true });
