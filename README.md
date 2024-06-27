@@ -1,10 +1,13 @@
 # jpScrollDirection
 Simple helper listener to determine if the user is scrolling up or down.
 
-## Import example:
-`import { jp_scrollDirection } from 'jpScrollDirection.js';`
+## Import example
+Include jp_scrollDirection in your own project.
+```
+import { jp_scrollDirection } from 'jpScrollDirection.js';
+```
 
-## Example usage:
+## Example usage
 ```
 window.addEventListener( 'scroll', () => {
 	console.log( 'jp_scrollDirection = ', jp_scrollDirection );
@@ -19,4 +22,4 @@ window.addEventListener( 'scroll', () => {
 ```
 
 ## Demo
-[Scroll direction demo here.](https://html-preview.github.io/?url=https://github.com/sparkjames/jpScrollDirection/blob/main/test.html)
+[Scroll direction demo here.](https://html-preview.github.io/?url=https://github.com/sparkjames/jpScrollDirection/blob/main/dist/test.html)

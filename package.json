@@ -1,0 +1,32 @@
+{
+  "name": "jpscrolldirection",
+  "version": "1.0.0",
+  "description": "Simple helper listener to determine if the user is scrolling up or down.",
+  "targets": {
+    "default": {
+      "distDir": "dist",
+      "optimize": true
+    }
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead, iOS >= 7",
+  "scripts": {
+    "watch": "parcel watch index.js",
+    "build": "parcel build index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sparkjames/jpScrollDirection.git"
+  },
+  "author": "James Pfleiderer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sparkjames/jpScrollDirection/issues"
+  },
+  "homepage": "https://github.com/sparkjames/jpScrollDirection#readme",
+  "devDependencies": {
+    "@parcel/resolver-glob": "^2.12.0",
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0",
+    "parcel-resolver-ignore": "^2.2.0"
+  }
+}
